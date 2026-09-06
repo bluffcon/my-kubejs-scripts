@@ -2,7 +2,8 @@
     server script
         requires Forestry:CE (for items)
 
-    adds server-purpose teleport commands that take payments for execution
+    adds server-purpose teleport commands that take payments for execution.
+    all work only in the overworld to prevent cheesing dimensions and death
     they are also adapted for singleplayer, throwing necessary errors.
 
     summary:
