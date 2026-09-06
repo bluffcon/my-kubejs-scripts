@@ -23,12 +23,12 @@ ServerEvents.generateData("after_mods", e => {
             "chance": chance,
             "first": a,
             "second": b,
-            "result": `fsth:${species}`,
-            "id": `fsth:bee_mutation/${species}`,
+            "result": `example_namespace:${species}`,
+            "id": `example_namespace:bee_mutation/${species}`,
             "conditions": conditions
         };
         
-        e.json(`fsth:recipe/bee_mutation/${species}`, mut);
+        e.json(`example_namespace:recipe/bee_mutation/${species}`, mut);
     }
     let manualbreeds = (a, b, chance, species, id, conditions = []) => {
         let mut = {
@@ -36,12 +36,12 @@ ServerEvents.generateData("after_mods", e => {
             "chance": chance,
             "first": a,
             "second": b,
-            "result": `fsth:${species}`,
-            "id": `fsth:bee_mutation/${id}`,
+            "result": `example_namespace:${species}`,
+            "id": `example_namespace:bee_mutation/${id}`,
             "conditions": conditions
         };
         
-        e.json(`fsth:recipe/bee_mutation/${species}`, mut);
+        e.json(`example_namespace:recipe/bee_mutation/${species}`, mut);
     }
 
     let hexToDec = (hex) => {
@@ -52,7 +52,7 @@ ServerEvents.generateData("after_mods", e => {
     let makebee = (species, genus, authority, dominant, glint, body, outline, products, genalleles, breeding) => {
         let genome = {}
         genalleles.forEach(a => Object.assign(genome, a))
-        e.json(`fsth:bee_species/${species}`, {
+        e.json(`example_namespace:bee_species/${species}`, {
             "body": hexToDec(body),
             "dominant": dominant,
             "authority": authority,
@@ -63,7 +63,7 @@ ServerEvents.generateData("after_mods", e => {
             "species": species,
             "glint": glint
         })
-        e.json(`fsth:taxon/${genus}`, {
+        e.json(`example_namespace:taxon/${genus}`, {
             "parent": "apidae",
             "name": genus,
             "rank": "genus"
@@ -72,7 +72,7 @@ ServerEvents.generateData("after_mods", e => {
         if (breeding !== "none") breeds(breeding.a, breeding.b, breeding.chance, species = species, breeding.conditions);
     }
     let makeflower = (flower, id, dominant) => {
-        e.json(`fsth:flower_type/${id}`, {
+        e.json(`example_namespace:flower_type/${id}`, {
             "type": "forestry:tag_flower_type",
             "dominant": dominant,
             "flowers": flower
@@ -101,11 +101,11 @@ ServerEvents.generateData("after_mods", e => {
         [
             allele("speed", 0.6, true),
             allele("fertility", 5, false),
-            allele("flower_type", "fsth:logs", true)
+            allele("flower_type", "example_namespace:logs", true)
         ],
         {
             a: "forestry:forest",
-            b: "fsth:happy",
+            b: "example_namespace:happy",
             chance: 0.5
         }
     )
